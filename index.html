@@ -551,6 +551,30 @@ body.tekst-duzy .podglad-tekstu p {
     z-index: 1;
     color: white;
 }
+
+
+/* MAŁE TELEFONY */
+
+@media (max-width: 480px) {
+    .menu-kontener {
+        margin: 0 10px;
+        gap: 10px;
+    }
+
+    .menu-kontener > img {
+        width: 60px;
+    }
+
+    .menu-kontener > .nav-link2 {
+        font-size: 21px !important;
+    }
+
+    .menu-linki .nav-link {
+        font-size: 17px !important;
+    }
+}
+
+
 </style>
 </head>
 <body>
@@ -560,12 +584,7 @@ body.tekst-duzy .podglad-tekstu p {
     
 
 <div class="menu">
-    <div style="
-        display: flex;
-        align-items: center;
-        margin-left: 16%;
-        gap: 20px;
-    ">
+    <div class="menu-kontener">
 
     <img src="StronaPF/Logo Official.png"
     alt="Logo Perfekcyjnej Firmy" width="150">
@@ -579,6 +598,20 @@ body.tekst-duzy .podglad-tekstu p {
     Firma
 </a>
 
+
+
+<button class="przycisk-menu"
+        id="przyciskMenu"
+        type="button"
+        aria-label="Otwórz menu"
+        aria-expanded="false"
+        aria-controls="menuLinki">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<div class="menu-linki" id="menuLinki">
 <a href="index_ctpf.html" class="nav-link" style="
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
@@ -615,11 +648,11 @@ body.tekst-duzy .podglad-tekstu p {
             height="50">
 
     </button>
-</div>
+    </div> <!-- ustawienia -->
 
-    </div> <!-- Zamknięcie kontenera z logo i linkami -->
-</div>     <!-- Zamknięcie menu -->
-
+    </div> <!-- menu-linki -->
+    </div> <!-- menu-kontener -->
+</div> <!-- menu -->
 </section>
 
 
@@ -806,6 +839,51 @@ ustawTekst(
         ? zapisanyTekst
         : "normalny"
 );
+
+// RESPONSYWNE MENU
+
+const przyciskMenu = document.getElementById("przyciskMenu");
+const menuLinki = document.getElementById("menuLinki");
+
+function zamknijMenu() {
+    menuLinki.classList.remove("otwarte");
+    przyciskMenu.classList.remove("otwarte");
+    przyciskMenu.setAttribute("aria-expanded", "false");
+    przyciskMenu.setAttribute("aria-label", "Otwórz menu");
+}
+
+przyciskMenu.addEventListener("click", function() {
+    const otwarte = menuLinki.classList.toggle("otwarte");
+
+    przyciskMenu.classList.toggle("otwarte", otwarte);
+    przyciskMenu.setAttribute("aria-expanded", String(otwarte));
+    przyciskMenu.setAttribute(
+        "aria-label",
+        otwarte ? "Zamknij menu" : "Otwórz menu"
+    );
+});
+
+// Zamknięcie menu po kliknięciu linku
+
+menuLinki.querySelectorAll("a").forEach(function(link) {
+    link.addEventListener("click", zamknijMenu);
+});
+
+// Zamknięcie po naciśnięciu Escape
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        zamknijMenu();
+    }
+});
+
+// Zamknięcie po powiększeniu okna przeglądarki
+
+window.addEventListener("resize", function() {
+    if (window.innerWidth > 1100) {
+        zamknijMenu();
+    }
+});
 
 
 </script>
