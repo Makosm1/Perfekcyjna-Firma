@@ -160,12 +160,13 @@ body {
 
 .przycisk-ustawienia img {
     display: block;
-    transition: transform 0.4s ease, opacity 0.3s ease;
+    filter: invert(35%);
+    transition: transform 0.4s ease, filter 0.3s ease;
 }
 
 .przycisk-ustawienia:hover img {
     transform: rotate(45deg);
-    opacity: 0.7;
+    filter: invert(55%);
 }
 /* PRZYCIEMNIENIE STRONY */
 
@@ -190,8 +191,8 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: min(360px, calc(100vw - 40px));
-    height: 280px;
+    width: min(600px, calc(100vw - 40px));
+    height: min(450px, calc(100vh - 40px));
     box-sizing: border-box;
 
     background: #1b1b1b;
@@ -216,7 +217,280 @@ body {
     visibility: visible;
     transform: translate(-50%, -50%) scale(1);
 }
-    
+
+
+/* ZAWARTOŚĆ OKIENKA USTAWIEŃ */
+
+.okno-ustawienia {
+    padding: 30px;
+    color: #ffffff;
+    overflow-y: auto;
+}
+
+.okno-ustawienia h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+.opcja-ustawien {
+    margin-bottom: 30px;
+}
+
+.opcja-ustawien h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 21px;
+    margin: 0 0 15px;
+    text-align: center;
+}
+
+.przyciski-opcji {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.opcja {
+    background: #292929;
+    color: #cccccc;
+    border: 1px solid #444444;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.opcja:hover {
+    background: #393939;
+}
+
+.opcja.aktywna {
+    background: #343434;
+    border-color: #999999;
+    color: white;
+}
+
+/* JASNY MOTYW - STONOWANE KOLORY */
+
+body.jasny-motyw {
+    background-color: #c8c4c4;
+}
+
+.jasny-motyw .sekcja1 {
+    background-color: #c8c4c4;
+}
+
+.jasny-motyw .sekcja2 {
+    background-color: #b7b3b3;
+}
+
+.jasny-motyw .sekcja3 {
+    background-color: #a6a2a2;
+}
+
+.jasny-motyw .menu.scrolled {
+    background-color: #aaa6a6;
+}
+
+.jasny-motyw .nav-link,
+.jasny-motyw .nav-link2 {
+    color: #171717;
+}
+
+.jasny-motyw .nav-link:hover,
+.jasny-motyw .nav-link2:hover {
+    color: #555555;
+}
+
+.jasny-motyw .sekcja {
+    color: #171717;
+}
+
+.jasny-motyw .przycisk-ustawienia img {
+    filter: invert(35%);
+}
+
+.jasny-motyw .przycisk-ustawienia:hover img {
+    filter: invert(15%);
+}
+
+.jasny-motyw .okno-ustawienia {
+    background: #c1bdbd;
+    border-color: #999595;
+    color: #171717;
+}
+
+.jasny-motyw .opcja {
+    background: #b1adad;
+    border-color: #999595;
+    color: #222222;
+}
+
+.jasny-motyw .opcja:hover {
+    background: #a19d9d;
+}
+
+.jasny-motyw .opcja.aktywna {
+    background: #928e8e;
+    border-color: #555555;
+    color: #111111;
+}
+
+/* WIELKOŚĆ TEKSTU */
+
+/* MAŁY - 1,5 RAZY MNIEJSZY */
+
+body.tekst-maly .nav-link {
+    font-size: 16.67px !important;
+}
+
+body.tekst-maly .nav-link2 {
+    font-size: 23.33px !important;
+}
+
+body.tekst-maly .sekcja h1 {
+    font-size: 1.333rem;
+}
+
+/* DUŻY - 1,5 RAZY WIĘKSZY */
+
+body.tekst-duzy .nav-link {
+    font-size: 37.5px !important;
+}
+
+body.tekst-duzy .nav-link2 {
+    font-size: 52.5px !important;
+}
+
+body.tekst-duzy .sekcja h1 {
+    font-size: 3rem;
+}
+
+/* WYŚRODKOWANIE NAGŁÓWKÓW USTAWIEŃ */
+
+.okno-ustawienia h2,
+.okno-ustawienia h3 {
+    text-align: center;
+}
+
+
+/* WYGLĄD OKIENKA JAK NA ZDJĘCIU */
+
+.okno-ustawienia {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.okno-ustawienia h2 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 19px;
+    margin: 0 0 25px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #303030;
+}
+
+.opcja-ustawien {
+    margin-bottom: 22px;
+}
+
+.opcja-ustawien h3 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    margin: 0 0 14px;
+}
+
+.przyciski-opcji {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+}
+
+.opcja {
+    flex: 1;
+    min-width: 0;
+    padding: 9px 6px;
+    background: transparent;
+    border: none;
+    border-radius: 20px;
+    color: #aaaaaa;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.opcja:hover {
+    background: #292929;
+}
+
+.opcja.aktywna {
+    background: #242424;
+    color: #eeeeee;
+}
+
+.podglad-tekstu {
+    margin-top: auto;
+    padding: 14px 12px;
+    background: #242222;
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+}
+
+.podglad-tekstu span {
+    font-size: 12px;
+    color: #bbbbbb;
+}
+
+.podglad-tekstu p {
+    margin: 8px 0 0;
+    font-size: 16px;
+}
+
+/* PODGLĄD WIELKOŚCI TEKSTU */
+
+body.tekst-maly .podglad-tekstu p {
+    font-size: 10.67px;
+}
+
+body.tekst-duzy .podglad-tekstu p {
+    font-size: 24px;
+}
+
+/* TAK */
+
+.jasny-motyw .podglad-tekstu {
+    background: #b1adad;
+}
+
+.jasny-motyw .podglad-tekstu span {
+    color: #444444;
+}
+
+/* PRZYCISKI W JASNYM MOTYWIE */
+
+.jasny-motyw .opcja {
+    background: transparent;
+    border: none;
+    color: #555555;
+}
+
+.jasny-motyw .opcja:hover {
+    background: #aaa6a6;
+}
+
+.jasny-motyw .opcja.aktywna {
+    background: #a19d9d;
+    color: #171717;
+}
 
     
 </style>
@@ -279,8 +553,8 @@ body {
 
         <img src="StronaPF/Zebatka.png"
             alt="Ustawienia"
-            width="40"
-            height="40">
+            width="50"
+            height="50">
 
     </button>
 </div>
@@ -292,15 +566,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-</section>
 <section class="sekcja sekcja2" id="firma">
     <h1>TBD</h1>
 </section>
@@ -314,16 +579,7 @@ body {
 
     
 
-<!-- PRZYCIEMNIONE TŁO -->
-<div class="tlo-ustawienia" id="tloUstawienia"></div>
 
-<!-- PUSTE OKIENKO USTAWIEŃ -->
-<div class="okno-ustawienia"
-     id="oknoUstawienia"
-     role="dialog"
-     aria-label="Ustawienia strony"
-     aria-modal="true">
-</div>
 
 
 
@@ -334,12 +590,46 @@ body {
 <div class="tlo-ustawienia" id="tloUstawienia"></div>
 
 <!-- PUSTE OKIENKO USTAWIEŃ -->
+<!-- OKIENKO USTAWIEŃ -->
+
 <div class="okno-ustawienia"
      id="oknoUstawienia"
      role="dialog"
-     aria-label="Ustawienia strony"
+     aria-labelledby="tytulUstawien"
      aria-modal="true">
+
+    <h2 id="tytulUstawien">Ustawienia</h2>
+
+    <div class="opcja-ustawien">
+        <h3>Motyw strony</h3>
+
+        <div class="przyciski-opcji">
+            <button type="button" class="opcja aktywna"
+                    data-motyw="ciemny">Ciemny</button>
+            <button type="button" class="opcja"
+                    data-motyw="jasny">Jasny</button>
+        </div>
+    </div>
+
+    <div class="opcja-ustawien">
+        <h3>Wielkość tekstu</h3>
+
+        <div class="przyciski-opcji">
+            <button type="button" class="opcja"
+                    data-tekst="maly">Mała</button>
+            <button type="button" class="opcja aktywna"
+                    data-tekst="normalny">Normalna</button>
+            <button type="button" class="opcja"
+                    data-tekst="duzy">Duża</button>
+        </div>
+    </div>
+
+    <div class="podglad-tekstu">
+        <span>Podgląd tekstu</span>
+        <p id="tekstPodgladu">Witamy na stronie Perfekcyjna Firma!</p>
+    </div>
 </div>
+
 
 <script>
     // MENU PODCZAS SCROLLOWANIA
@@ -385,6 +675,75 @@ body {
             zamknijUstawienia();
         }
     });
+
+
+// ZMIANA MOTYWU
+
+const przyciskiMotywu = document.querySelectorAll("[data-motyw]");
+const przyciskiTekstu = document.querySelectorAll("[data-tekst]");
+
+function ustawMotyw(motyw) {
+    document.body.classList.toggle("jasny-motyw", motyw === "jasny");
+
+    przyciskiMotywu.forEach(function(przycisk) {
+        const aktywny = przycisk.dataset.motyw === motyw;
+
+        przycisk.classList.toggle("aktywna", aktywny);
+        przycisk.setAttribute("aria-pressed", String(aktywny));
+    });
+
+    localStorage.setItem("pf-motyw", motyw);
+}
+
+przyciskiMotywu.forEach(function(przycisk) {
+    przycisk.addEventListener("click", function() {
+        ustawMotyw(przycisk.dataset.motyw);
+    });
+});
+
+// ZMIANA WIELKOŚCI TEKSTU
+
+function ustawTekst(rozmiar) {
+    document.body.classList.remove("tekst-maly", "tekst-duzy");
+
+    if (rozmiar === "maly") {
+        document.body.classList.add("tekst-maly");
+    }
+
+    if (rozmiar === "duzy") {
+        document.body.classList.add("tekst-duzy");
+    }
+
+    przyciskiTekstu.forEach(function(przycisk) {
+        const aktywny = przycisk.dataset.tekst === rozmiar;
+
+        przycisk.classList.toggle("aktywna", aktywny);
+        przycisk.setAttribute("aria-pressed", String(aktywny));
+    });
+
+    localStorage.setItem("pf-tekst", rozmiar);
+}
+
+przyciskiTekstu.forEach(function(przycisk) {
+    przycisk.addEventListener("click", function() {
+        ustawTekst(przycisk.dataset.tekst);
+    });
+});
+
+// WCZYTYWANIE ZAPISANYCH USTAWIEŃ
+
+const zapisanyMotyw = localStorage.getItem("pf-motyw");
+const zapisanyTekst = localStorage.getItem("pf-tekst");
+
+ustawMotyw(zapisanyMotyw === "jasny" ? "jasny" : "ciemny");
+
+ustawTekst(
+    ["maly", "normalny", "duzy"].includes(zapisanyTekst)
+        ? zapisanyTekst
+        : "normalny"
+);
+
+
 </script>
 
 </body>
