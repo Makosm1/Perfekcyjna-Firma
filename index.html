@@ -552,6 +552,176 @@ body.tekst-duzy .podglad-tekstu p {
     color: white;
 }
 
+/* PODSTAWOWY UKŁAD MENU */
+
+.menu-kontener {
+    display: flex;
+    align-items: center;
+    margin-left: 16%;
+    gap: 20px;
+}
+
+.menu-linki {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.przycisk-menu {
+    display: none;
+}
+
+/* MNIEJSZE KOMPUTERY */
+
+@media (max-width: 1600px) and (min-width: 1101px) {
+    .menu-kontener {
+        margin-left: 4%;
+        gap: 12px;
+    }
+
+    .menu-linki {
+        gap: 10px;
+    }
+
+    .menu-linki .nav-link {
+        margin-left: 10px !important;
+        font-size: 19px !important;
+    }
+
+    .menu-kontener > img {
+        width: 110px;
+        height: auto;
+    }
+
+    .menu-kontener > .nav-link2 {
+        font-size: 29px !important;
+    }
+}
+
+/* TELEFONY I TABLETY */
+
+@media (max-width: 1100px) {
+
+    .menu-kontener {
+        margin: 0 15px;
+        gap: 12px;
+        flex-wrap: nowrap;
+    }
+
+    .menu-kontener > img {
+        width: 70px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .menu-kontener > .nav-link2 {
+        font-size: 24px !important;
+        flex-shrink: 0;
+    }
+
+    /* PRZYCISK ROZWIJANIA MENU */
+
+    .przycisk-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        margin-left: auto;
+        padding: 10px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .przycisk-menu span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        margin: 3px 0;
+        background: #aaaaaa;
+        border-radius: 3px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* ROZWIJANE MENU */
+
+    .menu-linki {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        margin: 0;
+        padding: 0 20px;
+
+        background-color: #242424;
+
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+
+        transition:
+            max-height 0.4s ease,
+            opacity 0.3s ease,
+            padding 0.4s ease,
+            visibility 0.4s ease;
+    }
+
+    .menu-linki.otwarte {
+        max-height: min(500px, calc(100dvh - 100px));
+        overflow-y: auto;
+        visibility: visible;
+        opacity: 1;
+        padding: 20px;
+    }
+
+    .menu-linki .nav-link {
+        display: block;
+        width: fit-content;
+        margin: 0 !important;
+        padding: 15px 0;
+        font-size: 20px !important;
+    }
+
+    .menu-linki .nav-link::after {
+        bottom: 7px;
+    }
+
+    .ustawienia {
+        margin: 10px 0 0;
+    }
+
+    /* ANIMACJA HAMBURGERA */
+
+    .przycisk-menu.otwarte span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .przycisk-menu.otwarte span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .przycisk-menu.otwarte span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* JASNY MOTYW */
+
+    .jasny-motyw .menu-linki {
+        background-color: #aaa6a6;
+    }
+
+    .jasny-motyw .przycisk-menu span {
+        background-color: #333333;
+    }
+}
 
 /* MAŁE TELEFONY */
 
@@ -665,7 +835,6 @@ body.tekst-duzy .podglad-tekstu p {
     <h1>TBD</h1>
 </section>
 
-</section>
 <section class="sekcja sekcja3" id="praca">
     <h1>TBD</h1>
 </section>
