@@ -559,34 +559,45 @@ body.tekst-duzy .podglad-tekstu p {
 
 /* MNIEJSZE KOMPUTERY */
 
-@media (max-width: 1600px) and (min-width: 1101px) {
+@media (max-width: 1600px) and (min-width: 1401px) {
     .menu-kontener {
-        margin-left: 4%;
-        gap: 12px;
-    }
-
-    .menu-linki {
+        margin-left: 2%;
+        margin-right: 2%;
         gap: 10px;
     }
 
+    .menu-linki {
+        gap: 8px;
+    }
+
     .menu-linki .nav-link {
-        margin-left: 10px !important;
-        font-size: 19px !important;
+        margin-left: 5px !important;
+        font-size: 17px !important;
+        white-space: nowrap;
     }
 
     .menu-kontener > img {
-        width: 110px;
+        width: 90px;
         height: auto;
     }
 
     .menu-kontener > .nav-link2 {
-        font-size: 29px !important;
+        font-size: 26px !important;
+        flex-shrink: 0;
+    }
+
+    .ustawienia {
+        margin-left: 5px;
+    }
+
+    .przycisk-ustawienia img {
+        width: 38px;
+        height: 38px;
     }
 }
-
 /* TELEFONY I TABLETY */
 
-@media (max-width: 1100px) {
+@media (max-width: 1400px) {
 
     .menu-kontener {
         margin: 0 15px;
@@ -782,6 +793,95 @@ body.tekst-duzy .podglad-tekstu p {
     }
 }
 
+/* RESPONSYWNE OKNO USTAWIEŃ */
+
+@media (max-width: 1100px) {
+    .okno-ustawienia {
+        width: min(500px, calc(100vw - 32px));
+        height: auto;
+        max-height: calc(100dvh - 32px);
+        padding: 24px;
+        overflow-y: auto;
+    }
+
+    .okno-ustawienia h2 {
+        margin-bottom: 22px;
+    }
+
+    .opcja-ustawien {
+        margin-bottom: 20px;
+    }
+
+    .podglad-tekstu {
+        margin-top: 12px;
+    }
+}
+
+/* MAŁE TELEFONY */
+
+@media (max-width: 480px) {
+    .okno-ustawienia {
+        width: calc(100vw - 24px);
+        max-height: calc(100dvh - 24px);
+        padding: 18px 14px;
+        border-radius: 16px;
+    }
+
+    .okno-ustawienia h2 {
+        font-size: 19px;
+        margin-bottom: 18px;
+        padding-bottom: 16px;
+    }
+
+    .opcja-ustawien {
+        margin-bottom: 18px;
+    }
+
+    .opcja-ustawien h3 {
+        font-size: 14px;
+    }
+
+    .przyciski-opcji {
+        gap: 6px;
+    }
+
+    .opcja {
+        padding: 10px 4px;
+        font-size: 12px;
+    }
+
+    .podglad-tekstu {
+        padding: 12px;
+    }
+}
+
+/* OSOBNE ZDJĘCIE NA TELEFONY */
+
+.zdjecie-bataty img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    .sekcja2 {
+        min-height: 100svh;
+        height: 100svh;
+    }
+
+    .zdjecie-bataty {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .zdjecie-bataty img {
+        object-position: center;
+    }
+}
 
 </style>
 </head>
@@ -797,7 +897,7 @@ body.tekst-duzy .podglad-tekstu p {
     <img src="StronaPF/Logo Official.png"
     alt="Logo Perfekcyjnej Firmy" width="150">
 
-    <a href="index.html" class="nav-link2 active" style="
+    <a href="index_PF.html" class="nav-link2 active" style="
     font-family: 'Times New Roman', Times, serif;
     font-size: 35px;
     line-height: 1.1;
@@ -866,9 +966,16 @@ body.tekst-duzy .podglad-tekstu p {
 
 
 <section class="sekcja sekcja2" id="firma">
-    <img src="StronaPF/batat1.png"
-         alt="Plantacja batatów Perfekcyjnej Firmy"
-         class="zdjecie-bataty">
+    <picture class="zdjecie-bataty">
+    <source media="(max-width: 600px)"
+            srcset="StronaPF/batat_telefon.png">
+
+    <source media="(max-width: 1100px)"
+            srcset="StronaPF/batat_tablet.png">
+
+    <img src="StronaPF/batat_komputer.png"
+         alt="Plantacja batatów Perfekcyjnej Firmy">
+</picture>
 
     <h1>TBD</h1>
 </section>
@@ -1087,7 +1194,7 @@ document.addEventListener("keydown", function(event) {
 // Zamknięcie po powiększeniu okna przeglądarki
 
 window.addEventListener("resize", function() {
-    if (window.innerWidth > 1100) {
+    if (window.innerWidth > 1400) {
         zamknijMenu();
     }
 });
