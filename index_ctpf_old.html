@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfekcyjna Firma</title>
+    <link rel="icon" type="image/png" href="StronaPF/Favicon.png">
+    <style>
+    .nav-link, .nav-link2 {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        padding-bottom: 12px;
+        color: white;
+        transition: color 0.3s ease;
+    }
+
+    /* CZERWONY PASEK */
+
+    .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 35px;
+        height: 3px;
+        background-color: #777777;
+        transition: all 0.7s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 100%;
+        background-color: #e60023;
+    }
+
+    /* NIEBIESKI PASEK */
+
+    .nav-link2::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 85px;
+        height: 3px;
+        background-color: blue;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link2:hover::after,
+    .nav-link2.active::after {
+        width: 100%;
+        background-color: blue;
+    }
+
+    /* ZMIANA KOLORU NAPISU */
+
+    .nav-link:hover,
+    .nav-link.active,
+    .nav-link2:hover,
+    .nav-link2.active {
+        color: #999999;
+    }
+</style>
+</head>
+<body style="background-color: #080707;">
+
+<div style="
+    display: flex;
+    align-items: center;
+    margin-left: 16%;
+    gap: 20px;
+">
+
+    <img src="StronaPF/Logo Official.png"
+    alt="Logo Perfekcyjnej Firmy" width="150">
+
+    <a href="index.html" class="nav-link2" style="
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 35px;
+    line-height: 1.1;
+">
+    Perfekcyjna<br>
+    Firma
+</a>
+
+<a href="index_ctpf.html" class="nav-link active" style="
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    margin-left: 50px;
+">
+    <b>O PERFEKCYJNEJ FIRMIE</b>
+</a>
+
+<a href="index_praca_PF.html" class="nav-link" style="
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    margin-left: 50px;
+">
+    <b>OFERTY PRACY</b>
+</a>
+
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<p style="color: white;">Co to Perfekcyjna Firma</p>
+
+</body>
+</html>

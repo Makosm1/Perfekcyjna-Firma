@@ -3,110 +3,784 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfekcyjna Firma</title>
+    <meta name="description" content="Poznaj Perfekcyjną Firmę, zajmującą się wyrobem metali i dystrybucją batatów.">
+    <meta name="keywords" content="Perfekcyjna Firma, PF, Batat, Metal, PFE, Perfekcyjna Firma Esports">
+
+    <meta name="author" content="De_Makosm">
+    <meta name="company" content="Perfekcyjna Firma">
+    <meta name="publisher" content="Wydawnictwo Perfekcyjna Firma">
+    <meta name="generator" content="Visual Studio Code">
+    <meta name="creation-date" content="5.11.2026r/y.">
+    <meta name="last-modified" content="25. 11.2026r/y.">
+    <title>O Perfekcyjnej Firmie | Perfekcyjna Firma</title>
     <link rel="icon" type="image/png" href="StronaPF/Favicon.png">
+
     <style>
-    .nav-link, .nav-link2 {
-        position: relative;
-        display: inline-block;
-        text-decoration: none;
-        padding-bottom: 12px;
-        color: white;
-        transition: color 0.3s ease;
-    }
+        /* PODSTAWOWY UKŁAD STRONY */
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* CZERWONY PASEK */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
 
-    .nav-link::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 35px;
-        height: 3px;
-        background-color: #777777;
-        transition: all 0.7s ease;
-    }
+        body {
+            background-color: #080707;
+        }
 
-    .nav-link:hover::after,
-    .nav-link.active::after {
-        width: 100%;
-        background-color: #e60023;
-    }
+        .sekcja {
+            display: flow-root;
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 100vh;
+        }
 
-    /* NIEBIESKI PASEK */
+        .sekcja h1 {
+            margin: 0;
+        }
 
-    .nav-link2::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 85px;
-        height: 3px;
-        background-color: blue;
-        transition: all 0.3s ease;
-    }
+        .sekcja1 { background-color: #080707; }
 
-    .nav-link2:hover::after,
-    .nav-link2.active::after {
-        width: 100%;
-        background-color: blue;
-    }
+        /* NAWIGACJA */
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px 0;
+            background-color: transparent;
+            border-bottom: 1px solid transparent;
+            transition: background-color 0.4s ease, padding 0.4s ease,
+                        box-shadow 0.4s ease, border-color 0.4s ease,
+                        backdrop-filter 0.4s ease;
+        }
 
-    /* ZMIANA KOLORU NAPISU */
+        .menu.scrolled {
+            padding: 15px 0;
+            background-color: rgba(36, 36, 36, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        }
 
-    .nav-link:hover,
-    .nav-link.active,
-    .nav-link2:hover,
-    .nav-link2.active {
-        color: #999999;
-    }
-</style>
+        .menu-kontener {
+            display: flex;
+            align-items: center;
+            margin-left: 16%;
+            gap: 20px;
+        }
+
+        .menu-kontener > img {
+            width: 150px;
+            height: auto;
+            transition: transform 0.4s ease;
+        }
+
+        .menu-kontener > img:hover {
+            transform: scale(1.03);
+        }
+
+        .menu-linki {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link, .nav-link2 {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .menu-kontener > .nav-link2 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 35px;
+            line-height: 1.1;
+        }
+
+        .menu-linki .nav-link {
+            margin-left: 50px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 25px;
+        }
+
+        .nav-link::after, .nav-link2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+        }
+
+        /* Czerwone podkreślenie pozycji menu */
+        .nav-link::after {
+            width: 35px;
+            background-color: #777777;
+            transition: width 0.7s ease, background-color 0.7s ease;
+        }
+
+        .nav-link:not(.link-nieaktywny):hover::after,
+        .nav-link.active::after {
+            width: 100%;
+            background-color: #e60023;
+        }
+
+        /* Niebieskie podkreślenie nazwy firmy */
+        .nav-link2::after {
+            width: 85px;
+            background-color: blue;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link2:hover::after,
+        .nav-link2.active::after {
+            width: 100%;
+        }
+
+        .nav-link:not(.link-nieaktywny):hover,
+        .nav-link.active,
+        .nav-link2:hover,
+        .nav-link2.active {
+            color: #999999;
+        }
+
+        .link-nieaktywny {
+            cursor: default;
+        }
+
+        .przycisk-menu {
+            display: none;
+        }
+
+        /* IKONA USTAWIEŃ */
+        .ustawienia {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+
+        .przycisk-ustawienia {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .przycisk-ustawienia img {
+            display: block;
+            filter: invert(35%);
+            transition: transform 0.4s ease, filter 0.3s ease;
+        }
+
+        .przycisk-ustawienia:hover img {
+            transform: rotate(45deg);
+            filter: invert(55%);
+        }
+
+        /* PRZYCIEMNIENIE I OKNO USTAWIEŃ */
+        .tlo-ustawienia {
+            position: fixed;
+            inset: 0;
+            z-index: 1999;
+            background: rgba(0, 0, 0, 0.45);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .tlo-ustawienia.otwarte {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .okno-ustawienia {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 2000;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: min(600px, calc(100vw - 40px));
+            height: min(450px, calc(100vh - 40px));
+            padding: 20px;
+            overflow-y: auto;
+            background: #1b1b1b;
+            border: 1px solid #333333;
+            border-radius: 22px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, -46%) scale(0.96);
+            transition: opacity 0.3s ease, transform 0.3s ease,
+                        visibility 0s linear 0.3s;
+        }
+
+        .okno-ustawienia.otwarte {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s;
+        }
+
+        .okno-ustawienia:focus {
+            outline: none;
+        }
+
+        .okno-ustawienia h2 {
+            margin: 0 0 25px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #303030;
+            font-family: Arial, sans-serif;
+            font-size: 19px;
+            text-align: center;
+        }
+
+        .opcja-ustawien {
+            margin-bottom: 22px;
+        }
+
+        .opcja-ustawien h3 {
+            margin: 0 0 14px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .przyciski-opcji {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            gap: 8px;
+        }
+
+        .opcja {
+            flex: 1;
+            min-width: 0;
+            padding: 9px 6px;
+            background: transparent;
+            border: none;
+            border-radius: 20px;
+            color: #aaaaaa;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .opcja:hover {
+            background: #292929;
+        }
+
+        .opcja.aktywna {
+            background: #242424;
+            color: #eeeeee;
+        }
+
+        .podglad-tekstu {
+            margin-top: auto;
+            padding: 14px 12px;
+            background: #242222;
+            border-radius: 12px;
+            font-family: Arial, sans-serif;
+        }
+
+        .podglad-tekstu span {
+            font-size: 12px;
+            color: #bbbbbb;
+        }
+
+        .podglad-tekstu p {
+            margin: 8px 0 0;
+            font-size: 16px;
+        }
+
+        /* WYBÓR WIELKOŚCI TEKSTU – BEZ ZMIANY MENU */
+        body.tekst-maly .sekcja h1 { font-size: 1.333rem; }
+        body.tekst-duzy .sekcja h1 { font-size: 3rem; }
+        body.tekst-maly .podglad-tekstu p { font-size: 10.67px; }
+        body.tekst-duzy .podglad-tekstu p { font-size: 24px; }
+
+        /* JASNY MOTYW */
+        body.jasny-motyw { background-color: #c8c4c4; }
+        .jasny-motyw .sekcja1 { background-color: #c8c4c4; }
+        .jasny-motyw .sekcja { color: #171717; }
+
+        .jasny-motyw .menu.scrolled {
+            background-color: rgba(170, 166, 166, 0.94);
+            border-bottom-color: rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .jasny-motyw .nav-link,
+        .jasny-motyw .nav-link2 { color: #171717; }
+
+        .jasny-motyw .nav-link:not(.link-nieaktywny):hover,
+        .jasny-motyw .nav-link2:hover { color: #555555; }
+
+        .jasny-motyw .przycisk-ustawienia img { filter: invert(35%); }
+        .jasny-motyw .przycisk-ustawienia:hover img { filter: invert(15%); }
+
+        .jasny-motyw .okno-ustawienia {
+            background: #c1bdbd;
+            border-color: #999595;
+            color: #171717;
+        }
+
+        .jasny-motyw .opcja { color: #555555; }
+        .jasny-motyw .opcja:hover { background: #aaa6a6; }
+        .jasny-motyw .opcja.aktywna {
+            background: #a19d9d;
+            color: #171717;
+        }
+        .jasny-motyw .podglad-tekstu { background: #b1adad; }
+        .jasny-motyw .podglad-tekstu span { color: #444444; }
+
+        /* MNIEJSZE KOMPUTERY */
+        @media (min-width: 1401px) and (max-width: 1600px) {
+            .menu-kontener {
+                margin-left: 2%;
+                margin-right: 2%;
+                gap: 10px;
+            }
+
+            .menu-linki { gap: 8px; }
+
+            .menu-linki .nav-link {
+                margin-left: 5px;
+                font-size: 17px;
+                white-space: nowrap;
+            }
+
+            .menu-kontener > img { width: 90px; }
+            .menu-kontener > .nav-link2 {
+                font-size: 26px;
+                flex-shrink: 0;
+            }
+            .ustawienia { margin-left: 5px; }
+            .przycisk-ustawienia img {
+                width: 38px;
+                height: 38px;
+            }
+        }
+
+        /* TABLETY, TELEFONY I MNIEJSZE LAPTOPY: MENU HAMBURGEROWE */
+        @media (max-width: 1400px) {
+            .menu-kontener {
+                margin: 0 15px;
+                gap: 12px;
+                flex-wrap: nowrap;
+            }
+
+            .menu-kontener > img {
+                width: 70px;
+                flex-shrink: 0;
+            }
+
+            .menu-kontener > .nav-link2 {
+                font-size: 24px;
+                flex-shrink: 0;
+            }
+
+            .przycisk-menu {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                margin-left: auto;
+                padding: 10px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+            }
+
+            .przycisk-menu span {
+                display: block;
+                width: 30px;
+                height: 3px;
+                margin: 3px 0;
+                background: #aaaaaa;
+                border-radius: 3px;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+
+            .menu-linki {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                margin: 0;
+                padding: 0 20px;
+                background-color: #242424;
+                max-height: 0;
+                overflow: hidden;
+                visibility: hidden;
+                opacity: 0;
+                transition: max-height 0.4s ease, opacity 0.3s ease,
+                            padding 0.4s ease, visibility 0s linear 0.4s;
+            }
+
+            .menu-linki.otwarte {
+                max-height: min(500px, calc(100dvh - 100px));
+                overflow-y: auto;
+                visibility: visible;
+                opacity: 1;
+                padding: 20px;
+                transition: max-height 0.4s ease, opacity 0.3s ease,
+                            padding 0.4s ease, visibility 0s;
+            }
+
+            .menu-linki .nav-link {
+                display: block;
+                width: fit-content;
+                margin-left: 0;
+                padding: 15px 0;
+                font-size: 20px;
+            }
+
+            .menu-linki .nav-link::after { bottom: 7px; }
+            .ustawienia { margin: 10px 0 0; }
+
+            .przycisk-menu.otwarte span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .przycisk-menu.otwarte span:nth-child(2) { opacity: 0; }
+            .przycisk-menu.otwarte span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .jasny-motyw .menu-linki { background-color: #aaa6a6; }
+            .jasny-motyw .przycisk-menu span { background-color: #333333; }
+        }
+
+        /* SEKCJE I MODAL NA MNIEJSZYCH EKRANACH */
+        @media (max-width: 1100px) {
+            .sekcja { min-height: 100svh; }
+
+            .sekcja h1 {
+                max-width: 100%;
+                box-sizing: border-box;
+                padding: 0 20px;
+                overflow-wrap: break-word;
+            }
+
+            .okno-ustawienia {
+                width: min(500px, calc(100vw - 32px));
+                height: auto;
+                max-height: calc(100dvh - 32px);
+                padding: 24px;
+            }
+
+            .okno-ustawienia h2 { margin-bottom: 22px; }
+            .opcja-ustawien { margin-bottom: 20px; }
+            .podglad-tekstu { margin-top: 12px; }
+        }
+
+        /* MAŁE TELEFONY */
+        @media (max-width: 480px) {
+            .menu-kontener {
+                margin: 0 10px;
+                gap: 10px;
+            }
+
+            .menu-kontener > img { width: 60px; }
+            .menu-kontener > .nav-link2 { font-size: 21px; }
+            .menu-linki .nav-link { font-size: 17px; }
+            .sekcja h1 { padding: 0 15px; }
+
+            .okno-ustawienia {
+                width: calc(100vw - 24px);
+                max-height: calc(100dvh - 24px);
+                padding: 18px 14px;
+                border-radius: 16px;
+            }
+
+            .okno-ustawienia h2 {
+                font-size: 19px;
+                margin-bottom: 18px;
+                padding-bottom: 16px;
+            }
+
+            .opcja-ustawien { margin-bottom: 18px; }
+            .opcja-ustawien h3 { font-size: 14px; }
+            .przyciski-opcji { gap: 6px; }
+            .opcja {
+                padding: 10px 4px;
+                font-size: 12px;
+            }
+            .podglad-tekstu { padding: 12px; }
+        }
+
+        /* TREŚĆ PODSTRONY – poniżej stałego paska nawigacji */
+        .tresc-podstrony {
+            box-sizing: border-box;
+            width: min(100%, 1100px);
+            margin: 0 auto;
+            padding: clamp(175px, 22vh, 260px) 28px 80px;
+            color: #ffffff;
+        }
+
+        .tresc-podstrony h1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: clamp(26px, 2.6vw, 42px);
+            font-weight: normal;
+            line-height: 1.25;
+        }
+
+        .jasny-motyw .tresc-podstrony { color: #171717; }
+
+        @media (max-width: 480px) {
+            .tresc-podstrony { padding: 150px 18px 60px; }
+        }
+
+        /* DOSTĘPNOŚĆ DLA UŻYTKOWNIKÓW KLAWIATURY */
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid #4f8cff;
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: #080707;">
+<body>
+    <main>
+        <section class="sekcja sekcja1" id="o-firmie">
+            <nav class="menu" aria-label="Nawigacja główna">
+                <div class="menu-kontener">
+                    <img src="StronaPF/Logo Official.png"
+                         alt="Logo Perfekcyjnej Firmy" width="150" height="150">
 
-<div style="
-    display: flex;
-    align-items: center;
-    margin-left: 16%;
-    gap: 20px;
-">
+                    <a href="index.html" class="nav-link2">
+                        Perfekcyjna<br>Firma
+                    </a>
 
-    <img src="StronaPF/Logo Official.png"
-    alt="Logo Perfekcyjnej Firmy" width="150">
+                    <button class="przycisk-menu" id="przyciskMenu" type="button"
+                            aria-label="Otwórz menu" aria-expanded="false"
+                            aria-controls="menuLinki">
+                        <span></span><span></span><span></span>
+                    </button>
 
-    <a href="index.html" class="nav-link2" style="
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 35px;
-    line-height: 1.1;
-">
-    Perfekcyjna<br>
-    Firma
-</a>
+                    <div class="menu-linki" id="menuLinki">
+                        <a href="index_ctpf.html" class="nav-link active" aria-current="page"><b>O PERFEKCYJNEJ FIRMIE</b></a>
+                        <a href="index_praca_PF.html" class="nav-link"><b>OFERTY PRACY</b></a>
+                        <!-- Brak gotowej podstrony esports; nie tworzymy błędnego linku /TBD. -->
+                        <span class="nav-link link-nieaktywny" aria-disabled="true">
+                            <b>PERFEKCYJNA FIRMA ESPORTS</b>
+                        </span>
 
-<a href="index_ctpf.html" class="nav-link active" style="
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 25px;
-    margin-left: 50px;
-">
-    <b>O PERFEKCYJNEJ FIRMIE</b>
-</a>
+                        <div class="ustawienia">
+                            <button class="przycisk-ustawienia" id="przyciskUstawienia"
+                                    type="button" aria-label="Otwórz ustawienia"
+                                    aria-expanded="false" aria-controls="oknoUstawienia">
+                                <img src="StronaPF/Zebatka.png" alt="" width="50" height="50">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
 
-<a href="index_praca_PF.html" class="nav-link" style="
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 25px;
-    margin-left: 50px;
-">
-    <b>OFERTY PRACY</b>
-</a>
+            <div class="tresc-podstrony">
+                <h1>Co to Perfekcyjna Firma</h1>
+            </div>
+        </section>
+    </main>
 
+    <div class="tlo-ustawienia" id="tloUstawienia"></div>
 
-</div>
-<br>
-<br>
-<br>
-<br>
-<p style="color: white;">Co to Perfekcyjna Firma</p>
+    <div class="okno-ustawienia" id="oknoUstawienia" role="dialog"
+         aria-labelledby="tytulUstawien" aria-modal="true" tabindex="-1">
+        <h2 id="tytulUstawien">Ustawienia</h2>
 
+        <div class="opcja-ustawien">
+            <h3>Motyw strony</h3>
+            <div class="przyciski-opcji">
+                <button type="button" class="opcja aktywna" data-motyw="ciemny">Ciemny</button>
+                <button type="button" class="opcja" data-motyw="jasny">Jasny</button>
+            </div>
+        </div>
+
+        <div class="opcja-ustawien">
+            <h3>Wielkość tekstu</h3>
+            <div class="przyciski-opcji">
+                <button type="button" class="opcja" data-tekst="maly">Mała</button>
+                <button type="button" class="opcja aktywna" data-tekst="normalny">Normalna</button>
+                <button type="button" class="opcja" data-tekst="duzy">Duża</button>
+            </div>
+        </div>
+
+        <div class="podglad-tekstu">
+            <span>Podgląd tekstu</span>
+            <p id="tekstPodgladu">Witamy na stronie Perfekcyjna Firma!</p>
+        </div>
+    </div>
+
+    <script>
+        "use strict";
+
+        const menu = document.querySelector(".menu");
+        const przyciskMenu = document.getElementById("przyciskMenu");
+        const menuLinki = document.getElementById("menuLinki");
+        const przyciskUstawienia = document.getElementById("przyciskUstawienia");
+        const oknoUstawienia = document.getElementById("oknoUstawienia");
+        const tloUstawienia = document.getElementById("tloUstawienia");
+        const przyciskiMotywu = document.querySelectorAll("[data-motyw]");
+        const przyciskiTekstu = document.querySelectorAll("[data-tekst]");
+
+        function odczytajUstawienie(klucz) {
+            try {
+                return localStorage.getItem(klucz);
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function zapiszUstawienie(klucz, wartosc) {
+            try {
+                localStorage.setItem(klucz, wartosc);
+            } catch (error) {
+                // Strona działa również bez dostępu do pamięci przeglądarki.
+            }
+        }
+
+        function aktualizujMenu() {
+            menu.classList.toggle("scrolled", window.scrollY > 50);
+        }
+
+        function zamknijMenu() {
+            menuLinki.classList.remove("otwarte");
+            przyciskMenu.classList.remove("otwarte");
+            przyciskMenu.setAttribute("aria-expanded", "false");
+            przyciskMenu.setAttribute("aria-label", "Otwórz menu");
+        }
+
+        function zamknijUstawienia() {
+            if (!oknoUstawienia.classList.contains("otwarte")) return;
+            oknoUstawienia.classList.remove("otwarte");
+            tloUstawienia.classList.remove("otwarte");
+            przyciskUstawienia.setAttribute("aria-expanded", "false");
+            przyciskUstawienia.focus();
+        }
+
+        function ustawMotyw(motyw) {
+            document.body.classList.toggle("jasny-motyw", motyw === "jasny");
+            przyciskiMotywu.forEach(function (przycisk) {
+                const aktywny = przycisk.dataset.motyw === motyw;
+                przycisk.classList.toggle("aktywna", aktywny);
+                przycisk.setAttribute("aria-pressed", String(aktywny));
+            });
+            zapiszUstawienie("pf-motyw", motyw);
+        }
+
+        function ustawTekst(rozmiar) {
+            document.body.classList.remove("tekst-maly", "tekst-duzy");
+            if (rozmiar === "maly") document.body.classList.add("tekst-maly");
+            if (rozmiar === "duzy") document.body.classList.add("tekst-duzy");
+
+            przyciskiTekstu.forEach(function (przycisk) {
+                const aktywny = przycisk.dataset.tekst === rozmiar;
+                przycisk.classList.toggle("aktywna", aktywny);
+                przycisk.setAttribute("aria-pressed", String(aktywny));
+            });
+            zapiszUstawienie("pf-tekst", rozmiar);
+        }
+
+        window.addEventListener("scroll", aktualizujMenu, { passive: true });
+        aktualizujMenu();
+
+        przyciskMenu.addEventListener("click", function () {
+            const otwarte = menuLinki.classList.toggle("otwarte");
+            przyciskMenu.classList.toggle("otwarte", otwarte);
+            przyciskMenu.setAttribute("aria-expanded", String(otwarte));
+            przyciskMenu.setAttribute("aria-label", otwarte ? "Zamknij menu" : "Otwórz menu");
+        });
+
+        menuLinki.querySelectorAll("a[href]").forEach(function (link) {
+            link.addEventListener("click", zamknijMenu);
+        });
+
+        przyciskUstawienia.addEventListener("click", function () {
+            const otwarte = oknoUstawienia.classList.toggle("otwarte");
+            tloUstawienia.classList.toggle("otwarte", otwarte);
+            przyciskUstawienia.setAttribute("aria-expanded", String(otwarte));
+            if (otwarte) requestAnimationFrame(() => oknoUstawienia.focus());
+        });
+
+        tloUstawienia.addEventListener("click", zamknijUstawienia);
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                if (oknoUstawienia.classList.contains("otwarte")) {
+                    zamknijUstawienia();
+                } else {
+                    zamknijMenu();
+                }
+            }
+
+            if (event.key === "Tab" && oknoUstawienia.classList.contains("otwarte")) {
+                const elementy = [...oknoUstawienia.querySelectorAll("button:not([disabled]), a[href], input:not([disabled])")];
+                if (elementy.length === 0) {
+                    event.preventDefault();
+                    return;
+                }
+                const pierwszy = elementy[0];
+                const ostatni = elementy[elementy.length - 1];
+                if (event.shiftKey && (document.activeElement === pierwszy || document.activeElement === oknoUstawienia)) {
+                    event.preventDefault();
+                    ostatni.focus();
+                } else if (!event.shiftKey && (document.activeElement === ostatni)) {
+                    event.preventDefault();
+                    pierwszy.focus();
+                }
+            }
+        });
+
+        window.addEventListener("resize", function () {
+            if (window.innerWidth > 1400) zamknijMenu();
+        });
+
+        przyciskiMotywu.forEach(function (przycisk) {
+            przycisk.addEventListener("click", function () {
+                ustawMotyw(przycisk.dataset.motyw);
+            });
+        });
+
+        przyciskiTekstu.forEach(function (przycisk) {
+            przycisk.addEventListener("click", function () {
+                ustawTekst(przycisk.dataset.tekst);
+            });
+        });
+
+        const zapisanyMotyw = odczytajUstawienie("pf-motyw");
+        const zapisanyTekst = odczytajUstawienie("pf-tekst");
+        ustawMotyw(zapisanyMotyw === "jasny" ? "jasny" : "ciemny");
+        ustawTekst(["maly", "normalny", "duzy"].includes(zapisanyTekst) ? zapisanyTekst : "normalny");
+    </script>
 </body>
 </html>
